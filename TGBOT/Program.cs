@@ -20,7 +20,7 @@ namespace TelegramBotExperiments
     {
         public static List<BotUser> users = new List<BotUser>();
         private static readonly HttpClient client = new HttpClient();
-        static ITelegramBotClient bot = new TelegramBotClient("6088166607:AAHZaWlIgwlm7GDs7dSvrcVx-Tz5eVee1xU");
+        static ITelegramBotClient bot = new TelegramBotClient("telegramAPIKey");
         public static async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
         {
             // Некоторые действия
@@ -48,7 +48,7 @@ namespace TelegramBotExperiments
                     case "/btc":
                         WebRequest req = WebRequest.Create("https://api.apilayer.com/fixer/latest?base=USD&symbols=EUR,RUB,BTC");
                         req.Method = "GET";
-                        req.Headers.Add("apikey", "pOhlGiow4vHU0vxe0QDNVk3WSAjoukUr");
+                        req.Headers.Add("apikey", "APIKEY");
                         WebResponse res = await req.GetResponseAsync();
                         string ans = string.Empty;
                         using (Stream s = res.GetResponseStream())
@@ -85,7 +85,7 @@ namespace TelegramBotExperiments
                         conditions.Add("thunderstorm-with-hail", "гроза с градом");
                         WebRequest request = WebRequest.Create("https://api.weather.yandex.ru/v2/informers?lat=53.100511&lon=50.007112&lang=ru-RU");
                         request.Method = "GET";
-                        request.Headers.Add("X-Yandex-API-Key", "bd6f803d-6973-49d2-8bf4-27d6e6303e1a");
+                        request.Headers.Add("X-Yandex-API-Key", "YandexAPIKEY");
                         WebResponse resoult = await request.GetResponseAsync();
                         string answ = string.Empty;
                         using (Stream s = resoult.GetResponseStream())
@@ -119,8 +119,8 @@ namespace TelegramBotExperiments
                             {
                                 TextTranslate tx = new TextTranslate("ru", message.Text, "b1guuisq3soq37rvl8vd");
                                 wb.Headers.Add("Content-Type", "application/json");
-                                wb.Headers.Add("Authorization", "Bearer t1.9euelZqbi8mbyc6UzsyJmpKczJrGk-3rnpWalIuUxsuSicrLmomPl5eVncvl8_dWa1Rd-e83aBEr_d3z9xYaUl357zdoESv9.dwegJeDkIkxCmXtgTB9NBjbHZ5Cr733hu7T15hW61IttqYMecGMzDyTnTlHXuh7bVzcyv8MAfv3G7kwNJTwvDQ");
-                                /*$yandexPassportOauthToken = "y0_AgAAAAAREcE3AATuwQAAAADgS9Hr-Q-dzC2ATTKFuYmyINitIrsl1F8"
+                                wb.Headers.Add("Authorization", "Bearer SomeKey");
+                                /*$yandexPassportOauthToken = "YANDEX TOKEN"
 $Body = @{ yandexPassportOauthToken = "$yandexPassportOauthToken" } | ConvertTo - Json - Compress
 Invoke - RestMethod - Method 'POST' - Uri 'https://iam.api.cloud.yandex.net/iam/v1/tokens' - Body $Body - ContentType 'Application/json' | Select - Object - ExpandProperty iamToken*/
 
